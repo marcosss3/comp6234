@@ -1,0 +1,40 @@
+svg line{
+    stroke: grey;
+    stroke-width: 2;
+}
+
+svg circle{
+    stroke: red;
+    fill: none;
+    stroke-width: 2;
+}
+
+svg rect{
+    stroke: steelblue;
+    fill: none;
+    stroke-width: 2;
+}
+
+svg polygon{
+    stroke: green;
+    fill: none;
+    stroke-width: 2;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0px 20px 0px;
+}
+
+.title {
+    font-family: 'Lato';
+    font-size: 36px;
+    font-weight: 300;
+    color: #333333;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}

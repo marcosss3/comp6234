@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    
+    <!-- Styling -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700" />
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="/javascript/app.js"></script>
+    <script src="/javascript/service.js"></script>
+    <script src="/javascript/controller.js"></script>
+    
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    
+</head>
+<body ng-controller="mainController">
+
+    <!-- HEADER AND NAVBAR -->
+    <div id="header" class="header">
+        
+        <span class="title">{{title}}</span>
+        
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main" class="container">
+
+        <shapes></shapes>
+
+    </div>
+
+</body>
+</html>
