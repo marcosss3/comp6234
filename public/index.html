@@ -11,9 +11,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700" />
+    
+    <link rel="stylesheet" type="text/css" href="semantic.min.css">
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="semantic.min.js"></script>
     <script src="/javascript/app.js"></script>
     <script src="/javascript/service.js"></script>
     <script src="/javascript/controller.js"></script>
@@ -33,10 +37,18 @@
 
     <!-- MAIN CONTENT -->
     <div id="main" class="container">
+        
+        <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+          <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
+          <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
+          <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
+          <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+        </div>
 
-        <shapes></shapes>
+        <svg width="1080" height="540"></svg>
 
     </div>
+    
 
 </body>
 </html>

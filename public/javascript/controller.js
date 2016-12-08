@@ -1,40 +1,84 @@
 angular.module('app').controller('mainController', function ($scope, apiConnector) {
 
-    $scope.title = "The Impact of the EU Referendum on Holidays Abroad";
+    $scope.title = 'The Effects of the EU Referendum on Tourism';
+    $scope.sharePrices = [];
     
-    function createShapes() {
+    var palette = ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3'];
+    var count = 0;
+    
+    var fileName = './data/easyjet.csv';
+    
+    var svg = d3.select("svg");
+    
+    function createShapes (fileName) {
         
-        var width = 600,
-        height = 500;
+        var margin = {top: 20, right: 20, bottom: 50, left: 70};
+        var width = +svg.attr("width") - margin.left - margin.right;
+        var height = +svg.attr("height") - margin.top - margin.bottom;
+        var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        var parseTime = d3.timeParse("%Y-%m-%d");
 
-        var svg = d3.select("shapes").append("svg");
+        var x = d3.scaleTime().rangeRound([0, width]);
+        var y = d3.scaleLinear().rangeRound([height, 0]);
 
-        svg.attr("height", height)
-            .attr("width", width);    
+        var line = d3.line()
+            .x(function(d) { return x(d.Date); })
+            .y(function(d) { return y(d.Close); });
 
-        svg.append("line") 
-            .attr("x1", 0)
-            .attr("y1", 200)
-            .attr("x2", 100)
-            .attr("y2", 100);
+        d3.csv(fileName, function(d) {
+            
+          d.Date = parseTime(d.Date);
+          d.Close = +d.Close;
+          return d;
+            
+        }, function(error, data) {
+            
+          if (error) throw error;
 
-        svg.append("circle") 
-            .attr("cx", 200)
-            .attr("cy", 150)
-            .attr("r", 50);
+          x.domain(d3.extent(data, function(d) { return d.Date; }));
+          y.domain([ 0 , d3.max(data, function (d) { return d.Close + 50; }) ]);
+          //y.domain([ d3.min(data, function (d) { return d.Close - 50; }) , d3.max(data, function (d) { return d.Close + 50; }) ]);
 
-        svg.append("rect")
-            .attr("x", 300) 
-            .attr("y", 100)
-            .attr("width", 100) 
-            .attr("height", 100)
-            .attr("rx", 5); 
+          g.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(d3.axisBottom(x))
+            .append("text")
+              .attr("fill", "#000")
+              .attr("x", width/2)
+              .attr("y", 46)
+              .style("text-anchor", "middle")
+              .text("Date (2016)");
 
-        svg.append("polygon")
-            .attr("points", "450,200 500,100 550,200");
+          g.append("g")
+              .attr("class", "y axis")
+              .call(d3.axisLeft(y))
+            .append("text")
+              .attr("fill", "#000")
+              .attr("transform", "rotate(-90)")
+              .attr("x", -height/2)
+              .attr("y", -54)
+              .style("text-anchor", "middle")
+              .text("Share Price");
+
+          g.append("path")
+              .datum(data)
+              .attr("class", "line")
+              .attr("d", line)
+              .style("stroke-width", 3)
+              .style("stroke", palette[0]);
+            
+        });
         
     }
     
-    createShapes();
+    $scope.selectAirline = function (fileName) {
+        
+        svg.selectAll("*").remove();
+        createShapes(fileName);
+        
+    }
+    
+    createShapes(fileName);
 
 });

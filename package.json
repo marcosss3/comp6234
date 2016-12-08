@@ -1,0 +1,12 @@
+{
+  "name": "post-brexit",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "csvtojson": "^1.0.3",
+    "express": "^4.14.0",
+    "method-override": "^2.3.7",
+    "mongoose": "*",
+    "semantic-ui": "^2.2.6"
+  }
+}

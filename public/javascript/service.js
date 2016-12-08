@@ -2,21 +2,18 @@ angular.module('app').service('apiConnector', function ($http) {
 
     return {
         
-        /* Placeholder
-        
-        exchangeRates: [],
-        sharePrices: [],
-        
-        getExchangeRates: function (datasetName, callback) {
-            $http.get('/api/data/' + datasetName)
+        getData: function (callback) {
+            $http.get('/api/data')
                 .success(function (data) {
-                    if(data !== "null")
-                        callback(data);
-                    // else error handling
+                    callback(data);
                 });
         },
-        
-        */
+        getSharePrices: function (callback) {
+            $http.get('/api/data/sharePrices')
+                .success(function (data) {
+                    callback(data);
+                });
+        },
 
     };
     
