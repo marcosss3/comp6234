@@ -1,28 +1,3 @@
-SERIES,DESCRIPTION
-XUDLADS,Spot exchange rate - Australian Dollar into Sterling
-XUDLBK25,Spot exchange rate - Czech Koruna into Sterling
-XUDLBK47,Spot exchange rate - Polish Zloty into Sterling
-XUDLBK85,Spot exchange rate - Russian Ruble into Sterling
-XUDLBK87,Spot exchange rate - Thai Baht into Sterling
-XUDLBK89,Spot exchange rate - Chinese Yuan into Sterling
-XUDLBK93,Spot exchange rate - South Korean Won into Sterling
-XUDLBK95,Spot exchange rate - Turkish Lira into Sterling
-XUDLBK97,Spot exchange rate - Indian Rupee into Sterling
-XUDLCDS,Spot exchange rate - Canadian Dollar into Sterling
-XUDLDKS,Spot exchange rate - Danish Krone into Sterling
-XUDLERS,Spot exchange rate - Euro into Sterling
-XUDLHDS,Spot exchange rate - Hong Kong Dollar into Sterling
-XUDLJYS,Spot exchange rate - Japanese Yen into Sterling
-XUDLNDS,Spot exchange rate - New Zealand Dollar into Sterling
-XUDLNKS,Spot exchange rate - Norwegian Krone into Sterling
-XUDLSFS,Spot exchange rate - Swiss Franc into Sterling
-XUDLSGS,Spot exchange rate - Singapore Dollar into Sterling
-XUDLSKS,Spot exchange rate - Swedish Krona into Sterling
-XUDLSRS,Spot exchange rate - Saudi Riyal into Sterling
-XUDLTWS,Spot exchange rate - Taiwan Dollar into Sterling
-XUDLUSS,Spot exchange rate - US $ into Sterling
-XUDLZRS,Spot exchange rate - South African Rand into Sterling
-
 DATE,XUDLADS,XUDLBK25,XUDLBK47,XUDLBK85,XUDLBK87,XUDLBK89,XUDLBK93,XUDLBK95,XUDLBK97,XUDLCDS,XUDLDKS,XUDLERS,XUDLHDS,XUDLJYS,XUDLNDS,XUDLNKS,XUDLSFS,XUDLSGS,XUDLSKS,XUDLSRS,XUDLTWS,XUDLUSS,XUDLZRS
 03 Jan 2012,1.5064,30.8252,5.3472,49.5669,49.0658,9.8413,1796.1073,2.9357,83.0584,1.5778,8.9081,1.1979,12.1465,119.9907,1.978,9.2441,1.4576,2.0058,10.6832,5.8638,47.3638,1.5636,12.5623
 04 Jan 2012,1.5107,31.3196,5.4432,49.7418,49.184,9.8245,1796.5179,2.9439,82.5092,1.5835,8.9937,1.2093,12.1248,119.7835,1.9854,9.2937,1.4733,2.0103,10.7349,5.8535,47.2719,1.5609,12.7477
