@@ -29,22 +29,43 @@
     </div>
 
     <div id="main" class="container">
-
-        <!--Aviation Share Price-->
-        <div ng-controller="aviationSharePriceController">
-            <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
-              <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
-              <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
-              <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
-              <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+        <div class="ui two column grid">
+            <div class="row">
+                <h1>Change in aviation companies share price</h1>
             </div>
-                <svg width="1080" height="540"></svg>
+            <!--Aviation Share Price-->
+            <div class="row">
+                <div ng-controller="aviationSharePriceController">
+                    <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+                      <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
+                      <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
+                      <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
+                      <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+                    </div>
+                        <svg width="1080" height="540"></svg>
+                </div>
+            </div>
         </div>
 
         <!--Tourism travel types-->
         <div ng-controller="travelTypeController">
-            <h1>Tourism Data</h1>
-            <svg id="travelTypes" width="960" height="500"></svg>
+            <div class="ui two column grid">
+                <div class="row">
+                    <div class="column">
+                        <h1>Visits to the UK by Type</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h3>Absolute Figures</h3>
+                        <svg id="travelTypesAbsolute" width="500" height="500"></svg>
+                    </div>
+                    <div class="column">
+                        <h3>Percentage Change Year on Year</h3>
+                        <svg id="travelTypesChange" width="500" height="500"></svg>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
