@@ -205,6 +205,7 @@
                         .attr("class", "travelTypes");
 
                     for(var i=0; i<vmChange.travelTypes.length; i++) {
+                        var id = vmChange.travelTypes[i].id;
                         types.selectAll("dot")
                             .data(vmChange.travelTypes[i].values)
                             .enter().append("circle")
@@ -215,7 +216,7 @@
                             .attr("cy", function (d) {
                                 return vmChange.y(d.visitors);
                             })
-                            .attr("class", "travelTypes")
+                            .attr("class", id)
                             .on("mouseover", function (d) {
                                 div.transition()
                                     .duration(100)

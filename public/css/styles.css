@@ -37,3 +37,24 @@ div.tooltip {
     border-radius: 8px;
     pointer-events: none;
 }
+
+svg#travelTypesChange circle.Business{
+    stroke:darkorange;
+    fill:darkorange;
+
+}
+
+svg#travelTypesChange circle.VisitingFriends{
+    stroke:forestgreen;
+    fill:forestgreen;
+}
+
+svg#travelTypesChange circle.Holiday{
+    stroke:steelblue;
+    fill:steelblue;
+}
+
+svg#travelTypesChange circle.Miscellaneous{
+    stroke:crimson;
+    fill:crimson;
+}
