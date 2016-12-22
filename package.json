@@ -1,6 +1,8 @@
 {
   "name": "post-brexit",
   "main": "server.js",
+  "repository": "https://github.com/marcosss3/comp6234.git",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "csvtojson": "^1.0.3",
@@ -8,5 +10,12 @@
     "method-override": "^2.3.7",
     "mongoose": "*",
     "semantic-ui": "^2.2.6"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "update-deps": "npm update",
+    "postupdate-deps": "bower update",
+    "prestart": "npm install",
+    "start": "node server.js"
   }
 }

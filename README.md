@@ -6,6 +6,5 @@ Data Visualisation Coursework
 
 To run the front-end exclusively:
 
-1. cd into public
-2. Run `npm install http-server –g`
-3. Run `http-server`
+1. Run `bower install`
+2. Start Server 'npm start'

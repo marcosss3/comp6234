@@ -24,7 +24,8 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location
 app.use(express.static(__dirname + '/public')); 
-app.use(express.static(__dirname + '/semantic/dist')); 
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
+app.use('/resources', express.static(__dirname + '/resources'));
 
 // start app
 app.listen(port);

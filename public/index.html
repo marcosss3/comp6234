@@ -12,18 +12,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700" />
     
-    <link rel="stylesheet" type="text/css" href="semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/semantic/dist/semantic.min.css">
 
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="semantic.min.js"></script>
-    <script src="/javascript/app.js"></script>
-    <script src="/javascript/service.js"></script>
-    <script src="/javascript/controller.js"></script>
-    
-    <!-- D3 -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+
     
 </head>
 <body ng-controller="mainController">
@@ -35,20 +28,54 @@
         
     </div>
 
-    <!-- MAIN CONTENT -->
     <div id="main" class="container">
-        
-        <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
-          <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
-          <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
-          <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
-          <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+
+        <!--Aviation Share Price-->
+        <div ng-controller="aviationSharePriceController">
+            <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+              <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
+              <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
+              <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
+              <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+            </div>
+                <svg width="1080" height="540"></svg>
         </div>
 
-        <svg width="1080" height="540"></svg>
+        <!--Tourism travel types-->
+        <div ng-controller="travelTypeController">
+            <h1>Tourism Data</h1>
+            <svg id="travelTypes" width="960" height="500"></svg>
+        </div>
 
     </div>
-    
+    <!-- AngularJS -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <!--D3-->
+    <script src="bower_components/d3/d3.js"></script>
+
+    <!--Jquery-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!--semantic-->
+    <script src="bower_components/semantic/dist/semantic.min.js"></script>
+
+
+    <!--APP DATA-->
+        <!--MAIN-->
+        <script src="/javascript/app.js"></script>
+        <script src="/javascript/main.controller.js"></script>
+
+        <!--Aviation-->
+        <script src="/javascript/aviation_share_price/aviationsp.controller.js"></script>
+
+        <!--Travel Data-->
+        <script src="/javascript/travel_types/traveltypes.controller.js"></script>
 
 </body>
+
+
+
+
 </html>
