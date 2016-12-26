@@ -26,7 +26,7 @@
 
             var fileName = './data/easyjet.csv';
 
-            var svg = d3.select("svg");
+            var svg = d3v4.select("svg");
 
             function createShapes(fileName) {
 
@@ -34,12 +34,12 @@
                 var width = +svg.attr("width") - margin.left - margin.right;
                 var height = +svg.attr("height") - margin.top - margin.bottom;
                 var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-                var parseTime = d3.timeParse("%Y-%m-%d");
+                var parseTime = d3v4.timeParse("%Y-%m-%d");
 
-                var x = d3.scaleTime().rangeRound([0, width]);
-                var y = d3.scaleLinear().rangeRound([height, 0]);
+                var x = d3v4.scaleTime().rangeRound([0, width]);
+                var y = d3v4.scaleLinear().rangeRound([height, 0]);
 
-                var line = d3.line()
+                var line = d3v4.line()
                     .x(function (d) {
                         return x(d.Date);
                     })
@@ -47,7 +47,7 @@
                         return y(d.Close);
                     });
 
-                d3.csv(fileName, function (d) {
+                d3v4.csv(fileName, function (d) {
 
                     d.Date = parseTime(d.Date);
                     d.Close = +d.Close;
@@ -57,18 +57,18 @@
 
                     if (error) throw error;
 
-                    x.domain(d3.extent(data, function (d) {
+                    x.domain(d3v4.extent(data, function (d) {
                         return d.Date;
                     }));
-                    y.domain([0, d3.max(data, function (d) {
+                    y.domain([0, d3v4.max(data, function (d) {
                         return d.Close + 50;
                     })]);
-                    //y.domain([ d3.min(data, function (d) { return d.Close - 50; }) , d3.max(data, function (d) { return d.Close + 50; }) ]);
+                    //y.domain([ d3v4.min(data, function (d) { return d.Close - 50; }) , d3v4.max(data, function (d) { return d.Close + 50; }) ]);
 
                     g.append("g")
                         .attr("class", "x axis")
                         .attr("transform", "translate(0," + height + ")")
-                        .call(d3.axisBottom(x))
+                        .call(d3v4.axisBottom(x))
                         .append("text")
                         .attr("fill", "#000")
                         .attr("x", width / 2)
@@ -78,7 +78,7 @@
 
                     g.append("g")
                         .attr("class", "y axis")
-                        .call(d3.axisLeft(y))
+                        .call(d3v4.axisLeft(y))
                         .append("text")
                         .attr("fill", "#000")
                         .attr("transform", "rotate(-90)")

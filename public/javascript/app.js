@@ -1,5 +1,6 @@
 angular.module('app', [
     'ngRoute',
+    'datamaps',
     'app.main',
     'app.travelType',
     'app.aviationSharePrice',

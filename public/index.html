@@ -70,8 +70,13 @@
 
         <!-- Currency Change Map -->
         <div ng-controller="currencyMapController">
-            <div id="map">
+            <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+                <button class="ui button">1 Day</button>
+                <button class="ui button">1 Month</button>
+                <button class="ui button">3 Months</button>
+                <button class="ui button">Now</button>
             </div>
+            <datamap map="mapObject"></datamap>
         </div>
 
     </div>
@@ -81,12 +86,26 @@
 
     <!--D3-->
     <script src="bower_components/d3/d3.js"></script>
+    <script>
+        var d3v4 = d3;
+    </script>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script>
+        var d3v3 = d3;
+    </script>
 
     <!--Jquery-->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <!--semantic-->
     <script src="bower_components/semantic/dist/semantic.min.js"></script>
+    
+    <!-- Topojson -->
+    <script src="bower_components/topojson/topojson.min.js"></script>
+
+    <!-- World map -->
+    <script src="bower_components/datamaps/dist/datamaps.all.js"></script>
+    <script src="bower_components/angular-datamaps/dist/angular-datamaps.min.js"></script>
 
 
     <!--APP DATA-->

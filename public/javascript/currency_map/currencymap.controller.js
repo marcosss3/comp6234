@@ -15,8 +15,13 @@
     currencyMapController.$inject = ['$scope'];
 
     function currencyMapController($scope) {
-            $scope.sharePrices = [];
-
+        $scope.mapObject = {
+            scope: 'world',
+            options: {
+                width: 1100,
+                height: 700
+            },
         }
+    }
 
 })();

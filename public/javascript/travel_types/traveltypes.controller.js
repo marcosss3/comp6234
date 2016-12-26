@@ -15,7 +15,7 @@
 
 
         function travelTypeController() {
-            var parseTime = d3.timeParse("%Y%m%d");
+            var parseTime = d3v4.timeParse("%Y%m%d");
             var dataCsvAbsoluteTravelTypePath = "/resources/ukVisit.csv";
             var dataCsvChangeTravelTypePath = "/resources/ukVisitChange.csv";
 
@@ -38,11 +38,11 @@
                     vm.g.append("g")
                         .attr("class", "axis axis--x")
                         .attr("transform", "translate(0," + vm.height + ")")
-                        .call(d3.axisBottom(vm.x));
+                        .call(d3v4.axisBottom(vm.x));
 
                     vm.g.append("g")
                         .attr("class", "axis axis--y")
-                        .call(d3.axisLeft(vm.y))
+                        .call(d3v4.axisLeft(vm.y))
                         .append("text")
                         .attr("transform", "rotate(-90)")
                         .attr("y", 6)
@@ -81,18 +81,18 @@
 
 
                 function createDomain() {
-                    vm.x.domain(d3.extent(vm.data, function (d) {
+                    vm.x.domain(d3v4.extent(vm.data, function (d) {
                         return d.Date;
                     }));
 
                     vm.y.domain([
-                        d3.min(vm.travelTypes, function (c) {
-                            return d3.min(c.values, function (d) {
+                        d3v4.min(vm.travelTypes, function (c) {
+                            return d3v4.min(c.values, function (d) {
                                 return d.visitors;
                             });
                         }),
-                        d3.max(vm.travelTypes, function (c) {
-                            return d3.max(c.values, function (d) {
+                        d3v4.max(vm.travelTypes, function (c) {
+                            return d3v4.max(c.values, function (d) {
                                 return d.visitors;
                             });
                         })
@@ -106,7 +106,7 @@
 
 
                 function createSvg() {
-                    vm.svg = d3.select("svg#travelTypesAbsolute"),
+                    vm.svg = d3v4.select("svg#travelTypesAbsolute"),
                         vm.margin = {top: 50, right: 80, bottom: 50, left: 35},
                         vm.width = vm.svg.attr("width") - vm.margin.left - vm.margin.right,
                         vm.height = vm.svg.attr("height") - vm.margin.top - vm.margin.bottom,
@@ -114,14 +114,14 @@
                 }
 
                 function setUpAxis() {
-                    vm.x = d3.scaleTime().range([0, vm.width]),
-                    vm.y = d3.scaleLinear().range([vm.height, 0]),
-                    vm.z = d3.scaleOrdinal(d3.schemeCategory10);
+                    vm.x = d3v4.scaleTime().range([0, vm.width]),
+                    vm.y = d3v4.scaleLinear().range([vm.height, 0]),
+                    vm.z = d3v4.scaleOrdinal(d3v4.schemeCategory10);
                 }
 
                 function drawLine() {
-                    vm.line = d3.line()
-                        .curve(d3.curveBasis)
+                    vm.line = d3v4.line()
+                        .curve(d3v4.curveBasis)
                         .x(function (d) {
                             return vm.x(d.date);
                         })
@@ -131,7 +131,7 @@
 
                 }
 
-                d3.csv(dataCsvAbsoluteTravelTypePath, type, function (error, data) {
+                d3v4.csv(dataCsvAbsoluteTravelTypePath, type, function (error, data) {
                     if (error) throw error;
 
                     vm.data = data;
@@ -157,7 +157,7 @@
             function drawChangeGraph() {
 
                 function createSvg() {
-                    vmChange.svg = d3.select("svg#travelTypesChange"),
+                    vmChange.svg = d3v4.select("svg#travelTypesChange"),
                     vmChange.margin = {top: 50, right: 80, bottom: 50, left: 30},
                     vmChange.width = vmChange.svg.attr("width") - vmChange.margin.left - vmChange.margin.right,
                     vmChange.height = vmChange.svg.attr("height") - vmChange.margin.top - vmChange.margin.bottom,
@@ -179,18 +179,18 @@
                         return tooltipList
                     }
 
-                    var div = d3.select("body").append("div")
+                    var div = d3v4.select("body").append("div")
                         .attr("class", "tooltip")
                         .style("opacity", 0);
 
                     vmChange.g.append("g")
                         .attr("class", "axis axis--x")
                         .attr("transform", "translate(0," + vmChange.height + ")")
-                        .call(d3.axisBottom(vmChange.x));
+                        .call(d3v4.axisBottom(vmChange.x));
 
                     vmChange.g.append("g")
                         .attr("class", "axis axis--y")
-                        .call(d3.axisLeft(vmChange.y))
+                        .call(d3v4.axisLeft(vmChange.y))
                         .append("text")
                         .attr("transform", "rotate(-90)")
                         .attr("y", 6)
@@ -227,8 +227,8 @@
                                     getDataForLabel(d)[2].name + " : " + getDataForLabel(d)[2].value + "%<br>"+
                                     getDataForLabel(d)[3].name + " : " + getDataForLabel(d)[3].value + "%<br>"
                                 )
-                                    .style("left", (d3.event.pageX) + "px")
-                                    .style("top", (d3.event.pageY - 65) + "px");
+                                    .style("left", (d3v4.event.pageX) + "px")
+                                    .style("top", (d3v4.event.pageY - 65) + "px");
                             })
                             .on("mouseout", function (d) {
                                 div.transition()
@@ -264,18 +264,18 @@
 
 
                 function createDomain() {
-                    vmChange.x.domain(d3.extent(vmChange.data, function (d) {
+                    vmChange.x.domain(d3v4.extent(vmChange.data, function (d) {
                         return d.Date;
                     }));
 
                     vmChange.y.domain([
-                        d3.min(vmChange.travelTypes, function (c) {
-                            return d3.min(c.values, function (d) {
+                        d3v4.min(vmChange.travelTypes, function (c) {
+                            return d3v4.min(c.values, function (d) {
                                 return d.visitors;
                             });
                         }),
-                        d3.max(vmChange.travelTypes, function (c) {
-                            return d3.max(c.values, function (d) {
+                        d3v4.max(vmChange.travelTypes, function (c) {
+                            return d3v4.max(c.values, function (d) {
                                 return d.visitors;
                             });
                         })
@@ -288,14 +288,14 @@
 
 
                 function setUpAxis() {
-                    vmChange.x = d3.scaleTime().range([0, vmChange.width]),
-                    vmChange.y = d3.scaleLinear().range([vmChange.height, -50]),
-                    vmChange.z = d3.scaleOrdinal(d3.schemeCategory10);
+                    vmChange.x = d3v4.scaleTime().range([0, vmChange.width]),
+                    vmChange.y = d3v4.scaleLinear().range([vmChange.height, -50]),
+                    vmChange.z = d3v4.scaleOrdinal(d3v4.schemeCategory10);
                 }
 
                 function drawLine() {
-                    vmChange.line = d3.line()
-                        .curve(d3.curveLinear)
+                    vmChange.line = d3v4.line()
+                        .curve(d3v4.curveLinear)
                         .x(function (d) {
                             return vmChange.x(d.date);
                         })
@@ -307,7 +307,7 @@
 
 
                 var vmChange = {};
-                d3.csv(dataCsvChangeTravelTypePath, type, function (error, data) {
+                d3v4.csv(dataCsvChangeTravelTypePath, type, function (error, data) {
                     if (error) throw error;
 
                     vmChange.data = data;
