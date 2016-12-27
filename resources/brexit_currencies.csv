@@ -1,4 +1,4 @@
-Country,Currency,t,t+1,t+30,t+90,tnow
+Country,Currency,Brexit,Day,Month,Month3,Now
 AUS,Australian Dollar,0.511569,0.545759,0.568705,0.583467,0.587079
 CAN,Canadian Dollar,0.532174,0.562992,0.587480,0.585119,0.605293
 USA,US Dollar,0.682740,0.728900,0.762775,0.763700,0.809700
