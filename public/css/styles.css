@@ -58,3 +58,31 @@ svg#travelTypesChange circle.Miscellaneous{
     stroke:crimson;
     fill:crimson;
 }
+
+.map {
+    background-color: #fff;
+    position:absolute;
+    left:0;
+    right:0;
+}
+
+.map .background {
+    fill: none;
+    pointer-events: all;
+}
+
+.map #countries {
+    fill: #cde;
+    stroke: #fff;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.map #countries .active {
+    fill: #89a;
+}
+
+.map pre.prettyprint {
+    margin-bottom: 0;
+    padding: 9.5px;
+}

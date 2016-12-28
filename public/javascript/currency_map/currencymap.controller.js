@@ -9,7 +9,56 @@
                 controller: 'currencyMap'
             });
         }])
-        .controller('currencyMapController',  currencyMapController);
+        .controller('currencyMapController',  currencyMapController)
+        .directive('map', function () {
+            return {
+                restrict   : 'E',
+                scope      : {
+                    data: '=?'
+                },
+                template: 
+                    '<div class="map-wrapper">' +
+                    '<div class="map"></div>' +
+                    '</div>',
+                link: link
+            };
+            
+            function link(scope, element, attrs) {
+                
+                var width = 938,
+                    height = 500;
+                
+                var projection = d3v3.geo.mercator()
+                    .scale(150)
+                    .translate([width/2, height/1.5]);
+                    
+                var path = d3v3.geo.path()
+                    .projection(projection);
+                    
+                var svg = d3v3.select(element[0]).select('.map')
+                    .append('svg')
+                    .attr("preserveAspectRatio", "xMidYMid")
+                    .attr("viewBox", "0 0 " + width + " " + height);
+                    
+                svg.append("rect")
+                    .attr("class", "background")
+                    .attr("width", width)
+                    .attr("height", height);
+                    
+                var g = svg.append("g");
+                
+                d3v3.json("/resources/countries.topo.json", function(error, us) {
+                    g.append("g")
+                        .attr("id", "countries")
+                        .selectAll("path")
+                        .data(topojson.feature(us, us.objects.countries).features)
+                        .enter()
+                        .append("path")
+                        .attr("id", function(d) { return d.id; })
+                        .attr("d", path);
+                });
+           }
+        });
 
 
     currencyMapController.$inject = ['$scope'];
@@ -17,67 +66,8 @@
     function currencyMapController($scope) {
     
         var currencyDataPath = '/resources/brexit_currencies.csv';
-
-        function drawMap(day) {
-            d3v3.csv(currencyDataPath, function(data) {
-
-                    var dataset = {};
-                    
-                    var values = data.map(function(obj) {
-                        return ((obj[day] - obj['Brexit'])/obj['Brexit']*100);
-                    });
-                    
-                    var minValue = Math.min.apply(null, values);
-                    var maxValue = Math.max.apply(null, values);
-                    
-                    var paletteScale = d3v3.scale.linear()
-                            .domain([minValue, maxValue])
-                            .range(["#EAFFEE", "#006013"]);
-                            
-                    // Determine percentage change
-                    for(var i=0; i < data.length; i++) {
-                        
-                        var iso = data[i]['Country'];
-                        var currency = data[i]['Currency'];
-                        var change = (data[i][day] - data[i]['Brexit'])/data[i]['Brexit']*100;
-                        dataset[iso] = {currency: currency, percentageChange: change, fillColor: paletteScale(change)};
-                    
-                    }
-                    
-                    $scope.mapObject = {
-                        scope: 'world',
-                        projection: 'mercator',
-                        options: {
-                            width: 1100,
-                            legendHeight: 60,
-                            legend: true
-                        },
-                        geographyConfig: {
-                            highlightBorderColor: '#BADA55',
-                            popupTemplate: function(geography, data) {
-                                return '<div class="hoverinfo">' +
-                                        '<strong>Country: </strong>' + 
-                                        geography.properties.name + '<br>' +
-                                        '<strong>Currency: </strong>' + 
-                                        data.currency + '<br>' +
-                                        '<strong>Percentage Change: </strong>' +
-                                        Number(data.percentageChange).toFixed(2) +
-                                        '%</div>';
-                            },
-                            highlightBorderWidth: 3
-                        },
-                        fills: {defaultFill: '#F5F5F5'},
-                        data: dataset
-                    };             
-            }); 
-        }
+        $scope.data = {};
         
-        
-        $scope.showCurrency = function(day) {
-            drawMap(day);
-        }   
-        
-        drawMap('Day');    
         
     }
 

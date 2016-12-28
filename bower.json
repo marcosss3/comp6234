@@ -14,6 +14,6 @@
     "d3": "^4",
     "semantic": "semantic-ui#^2.2.7",
     "jquery": "^3.1.1",
-    "angular-datamaps": "0.1.2"
+    "topojson": "1.8.0"
   }
 }

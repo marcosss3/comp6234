@@ -29,26 +29,7 @@
     </div>
 
     <div id="main" class="container">
-        <!-- Currency Change Map -->
-        <div class="ui two column grid">
-            <div class="row">
-                <h1>Change in currencies after Brexit</h1>
-            </div>
-            <div class="row">
-                <div ng-controller="currencyMapController">
-                    <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
-                        <button class="ui button" ng-click="showCurrency('Day')">1 Day</button>
-                        <button class="ui button" ng-click="showCurrency('Month')">1 Month</button>
-                        <button class="ui button" ng-click="showCurrency('Month3')">3 Months</button>
-                        <button class="ui button" ng-click="showCurrency('Now')">Now</button>
-                    </div>
-                    <datamap 
-                            map="mapObject"
-                            plugins="mapPlugin">
-                    </datamap>
-                </div>
-            </div>
-        </div>
+        
         
         
         <div class="ui two column grid">
@@ -89,6 +70,24 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Currency Change Map -->
+        <div class="ui two column grid">
+            <div class="row">
+                <h1>Change in currencies after Brexit</h1>
+            </div>
+            <div class="row">
+                <div ng-controller="currencyMapController">
+                    <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+                        <button class="ui button" ng-click="showCurrency('Day')">1 Day</button>
+                        <button class="ui button" ng-click="showCurrency('Month')">1 Month</button>
+                        <button class="ui button" ng-click="showCurrency('Month3')">3 Months</button>
+                        <button class="ui button" ng-click="showCurrency('Now')">Now</button>
+                    </div>
+                    <map data='data'></map>
+                </div>
+            </div>
+        </div>
 
         
 
@@ -115,11 +114,6 @@
     
     <!-- Topojson -->
     <script src="bower_components/topojson/topojson.min.js"></script>
-
-    <!-- World map -->
-    <script src="bower_components/datamaps/dist/datamaps.all.js"></script>
-    <script src="bower_components/angular-datamaps/dist/angular-datamaps.js"></script>
-
 
     <!--APP DATA-->
         <!--MAIN-->
