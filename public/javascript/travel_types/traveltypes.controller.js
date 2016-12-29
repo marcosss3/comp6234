@@ -107,7 +107,7 @@
 
                 function createSvg() {
                     vm.svg = d3v4.select("svg#travelTypesAbsolute"),
-                        vm.margin = {top: 50, right: 80, bottom: 50, left: 35},
+                        vm.margin = {top: 20, right: 80, bottom: 30, left: 35},
                         vm.width = vm.svg.attr("width") - vm.margin.left - vm.margin.right,
                         vm.height = vm.svg.attr("height") - vm.margin.top - vm.margin.bottom,
                         vm.g = vm.svg.append("g").attr("transform", "translate(" + vm.margin.left + "," + vm.margin.top + ")");
@@ -158,7 +158,7 @@
 
                 function createSvg() {
                     vmChange.svg = d3v4.select("svg#travelTypesChange"),
-                    vmChange.margin = {top: 50, right: 80, bottom: 50, left: 30},
+                    vmChange.margin = {top: 60, right: 80, bottom: 50, left: 30},
                     vmChange.width = vmChange.svg.attr("width") - vmChange.margin.left - vmChange.margin.right,
                     vmChange.height = vmChange.svg.attr("height") - vmChange.margin.top - vmChange.margin.bottom,
                     vmChange.g = vmChange.svg.append("g").attr("transform", "translate(" + vmChange.margin.left + "," + vmChange.margin.top + ")");

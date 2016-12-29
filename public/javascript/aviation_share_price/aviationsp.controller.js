@@ -57,13 +57,9 @@
 
                     if (error) throw error;
 
-                    x.domain(d3v4.extent(data, function (d) {
-                        return d.Date;
-                    }));
-                    y.domain([0, d3v4.max(data, function (d) {
-                        return d.Close + 50;
-                    })]);
-                    //y.domain([ d3v4.min(data, function (d) { return d.Close - 50; }) , d3v4.max(data, function (d) { return d.Close + 50; }) ]);
+                    x.domain(d3v4.extent(data, function (d) { return d.Date; }));
+                    //y.domain([0, d3v4.max(data, function (d) { return d.Close + 50; })]);
+                    y.domain([ d3v4.min(data, function (d) { return d.Close - 20; }) , d3v4.max(data, function (d) { return d.Close + 20; }) ]);
 
                     g.append("g")
                         .attr("class", "x axis")
@@ -93,6 +89,24 @@
                         .attr("d", line)
                         .style("stroke-width", 3)
                         .style("stroke", palette[0]);
+                    
+                    var brexit = new Date(2016, 5, 23, 0, 0, 0, 0);
+                    
+                    g.append("line")
+                        .attr("x1", x(brexit))
+                        .attr("y1", 60)
+                        .attr("x2", x(brexit))
+                        .attr("y2", height)
+                        .style("stroke-width", 1)
+                        .style("stroke", "gray")
+                        .style("fill", "none");
+                    
+                    svg.append("text")
+                        .attr("transform", "translate(" + (x(brexit)+18) + "," + 60 + ")")
+                        .attr("dy", ".35em")
+                        .attr("text-anchor", "start")
+                        .style("fill", "gray")
+                        .text("EU Referendum");
 
                 });
 

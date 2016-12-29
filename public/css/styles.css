@@ -75,3 +75,11 @@ svg#travelTypesChange circle.Miscellaneous{
     right: -50px;
     left: 0px;
 }
+
+.description-text {
+    width: 720px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 300;
+}

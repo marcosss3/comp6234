@@ -14,65 +14,6 @@
     
     <link rel="stylesheet" type="text/css" href="bower_components/semantic/dist/semantic.min.css">
 
-
-
-
-    
-</head>
-<body ng-controller="mainController">
-
-    <!-- HEADER AND NAVBAR -->
-    <div id="header" class="header">
-        
-        <span class="title">{{title}}</span>
-        
-    </div>
-
-    <div id="main" class="container">
-        
-        
-        
-        <div class="ui two column grid">
-            <div class="row">
-                <h1>Change in aviation companies share price</h1>
-            </div>
-            <!--Aviation Share Price-->
-            <div class="row">
-                <div ng-controller="aviationSharePriceController">
-                    <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
-                      <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
-                      <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
-                      <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
-                      <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
-                    </div>
-                        <svg width="1080" height="540"></svg>
-                </div>
-            </div>
-        </div>
-
-        <!--Tourism travel types-->
-        <div ng-controller="travelTypeController">
-            <div class="ui two column grid">
-                <div class="row">
-                    <div class="column">
-                        <h1>Visits to the UK by Type</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <h3>Absolute Figures</h3>
-                        <svg id="travelTypesAbsolute" width="500" height="500"></svg>
-                    </div>
-                    <div class="column">
-                        <h3>Percentage Change Year on Year</h3>
-                        <svg id="travelTypesChange" width="500" height="500"></svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
-    </div>
     <!-- AngularJS -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -100,18 +41,63 @@
     <script src="bower_components/datamaps/dist/datamaps.world.min.js"></script>
 
     <!--APP DATA-->
-        <!--MAIN-->
-        <script src="/javascript/app.js"></script>
-        <script src="/javascript/main.controller.js"></script>
+    <!--MAIN-->
+    <script src="/javascript/app.js"></script>
+    <script src="/javascript/main.controller.js"></script>
 
-        <!--Aviation-->
-        <script src="/javascript/aviation_share_price/aviationsp.controller.js"></script>
+    <!--Aviation-->
+    <script src="/javascript/aviation_share_price/aviationsp.controller.js"></script>
 
-        <!--Travel Data-->
-        <script src="/javascript/travel_types/traveltypes.controller.js"></script>
+    <!--Travel Data-->
+    <script src="/javascript/travel_types/traveltypes.controller.js"></script>
 
-        <!--Currency Map -->
-        <script src="/javascript/currency_map/currencymap.controller.js"></script>
+    <!--Currency Map -->
+    <script src="/javascript/currency_map/currencymap.controller.js"></script>
+    
+</head>
+<body ng-controller="mainController">
+
+    <!-- HEADER AND NAVBAR -->
+    <div id="header" class="header" style="margin: 20px 0 40px 0">
+        <span class="title">{{title}}</span>  
+    </div>
+
+    <div id="main" class="container">
+            
+        <div ng-controller="aviationSharePriceController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+            <h2>CHANGE IN AVIATION COMPANIES' SHARE PRICE</h2>
+            <div class="description-text">
+                British airline companies have seen their shares fall large percentages on fears about a drop-off in UK travel abroad.
+            </div>
+            <!--Aviation Share Price-->
+            <div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
+              <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
+              <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
+              <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
+              <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+              <button class="ui button" ng-click="selectAirline('./data/thomas-cook.csv')">Thomas Cook</button>
+            </div>
+            <svg width="1080" height="540"></svg>
+        </div>
+
+        <!--Tourism travel types-->
+        <div ng-controller="travelTypeController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+            <h2>VISITS TO THE UK BY TYPE</h2>
+            <div class="description-text">
+                Overseas residents made slightly less visits to the UK during the months of summer. However, this minimum difference is probably not enough to be considered a direct consequence of Brexit.
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+                <h3>Absolute Figures</h3>
+                <svg id="travelTypesAbsolute" width="1000" height="500"></svg>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+                <h3>Percentage Change Year on Year</h3>
+                <svg id="travelTypesChange" width="1000" height="500"></svg>
+            </div>
+        </div>
+        
+
+    </div>
 
 </body>
 
