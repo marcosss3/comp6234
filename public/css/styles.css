@@ -60,29 +60,18 @@ svg#travelTypesChange circle.Miscellaneous{
 }
 
 .map {
-    background-color: #fff;
     position:absolute;
     left:0;
     right:0;
+    width: 900px;
+    height: 600px;
 }
 
-.map .background {
-    fill: none;
-    pointer-events: all;
+.datamaps-legend dt, .datamaps-legend dd {
+    float: none;
 }
 
-.map #countries {
-    fill: #cde;
-    stroke: #fff;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-}
-
-.map #countries .active {
-    fill: #89a;
-}
-
-.map pre.prettyprint {
-    margin-bottom: 0;
-    padding: 9.5px;
+.datamaps-legend {
+    right: -50px;
+    left: 0px;
 }

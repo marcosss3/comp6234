@@ -11,52 +11,54 @@
         }])
         .controller('currencyMapController',  currencyMapController)
         .directive('map', function () {
+                
             return {
                 restrict   : 'E',
                 scope      : {
-                    data: '=?'
+                    data: '='
                 },
-                template: 
-                    '<div class="map-wrapper">' +
-                    '<div class="map"></div>' +
-                    '</div>',
                 link: link
+                
             };
             
             function link(scope, element, attrs) {
+                scope.$watch('data', function(data) {
                 
-                var width = 938,
-                    height = 500;
-                
-                var projection = d3v3.geo.mercator()
-                    .scale(150)
-                    .translate([width/2, height/1.5]);
+                    var container = element[0].querySelector('.map');
+                    $('.map').empty();
                     
-                var path = d3v3.geo.path()
-                    .projection(projection);
                     
-                var svg = d3v3.select(element[0]).select('.map')
-                    .append('svg')
-                    .attr("preserveAspectRatio", "xMidYMid")
-                    .attr("viewBox", "0 0 " + width + " " + height);
+                    var map = new Datamap({
+                        element: container,
+                        projection: 'mercator',
+                        fills: {
+                            defaultFill: '#ddd'
+                        },
+                        data: data,
+                        geographyConfig: {
+                            popupTemplate: function(geo, data) {
+                                var countryInfo = '<div class="hoverinfo"><strong>' +
+                                                  geo.properties.name + '</strong><br>' +
+                                                  '<strong>Currency: </strong>' +
+                                                  data.currency + '<br>';
+                                                  
+                                if(geo.id == "GBR") {
+                                    return [countryInfo].join('');
+                                } else {
+                                    return [countryInfo +
+                                            '<strong>Percentage Change: </strong>' +
+                                            Number(data.percentageChange).toFixed(2) +
+                                            '%</div>'].join('');
+                                }
+                            },
+                            highlightBorderWidth: 3
+                        }
                     
-                svg.append("rect")
-                    .attr("class", "background")
-                    .attr("width", width)
-                    .attr("height", height);
-                    
-                var g = svg.append("g");
-                
-                d3v3.json("/resources/countries.topo.json", function(error, us) {
-                    g.append("g")
-                        .attr("id", "countries")
-                        .selectAll("path")
-                        .data(topojson.feature(us, us.objects.countries).features)
-                        .enter()
-                        .append("path")
-                        .attr("id", function(d) { return d.id; })
-                        .attr("d", path);
+                    });
                 });
+                
+                
+                     
            }
         });
 
@@ -66,8 +68,47 @@
     function currencyMapController($scope) {
     
         var currencyDataPath = '/resources/brexit_currencies.csv';
-        $scope.data = {};
         
+        $scope.changeMap = function(day) {
+            
+            d3v3.csv(currencyDataPath, function(data) {
+            
+                var dataset = {};
+                
+                
+                var valuesDay = data.map(function(obj) {return ((obj['Day'] - obj['Brexit'])/obj['Brexit']*100);});
+                var valuesMonth = data.map(function(obj) {return ((obj['Month'] - obj['Brexit'])/obj['Brexit']*100);});
+                var valuesMonth3 = data.map(function(obj) {return ((obj['Month3'] - obj['Brexit'])/obj['Brexit']*100);});
+                var valuesNow = data.map(function(obj) {return ((obj['Now'] - obj['Brexit'])/obj['Brexit']*100);});
+                
+                var all = valuesDay.concat(valuesMonth).concat(valuesMonth3).concat(valuesNow);
+                
+                var minValue = Math.min.apply(null, all);var maxValue = Math.max.apply(null, all);
+                
+                
+                var paletteScale = d3v3.scale.linear()
+                    .domain([minValue, 0, maxValue])
+                    .range(['#600000', '#EAFFEE', '#004C0F']);
+                    
+                for(var i=0; i<data.length; i++) {
+                    var iso = data[i]['Country'];
+                    var currency = data[i]['Currency'];
+                    var brexit = data[i]['Brexit'];
+                    
+                    var change = (data[i][day] - brexit)/brexit*100;
+                    
+                    dataset[iso] = {currency: currency, percentageChange: change, fillColor: paletteScale(change)};
+                }
+                
+                dataset['GBR'] = {currency: 'British Pound', fillColor: '#0000ff'};
+                
+                $scope.data = dataset;
+                $scope.$apply();
+            });
+            
+        }
+        
+        $scope.changeMap('Day');
         
     }
 
