@@ -27,7 +27,6 @@
                     var container = element[0].querySelector('.map');
                     $('.map').empty();
                     
-                    
                     var map = new Datamap({
                         element: container,
                         projection: 'mercator',
@@ -40,25 +39,26 @@
                                 var countryInfo = '<div class="hoverinfo"><strong>' +
                                                   geo.properties.name + '</strong><br>' +
                                                   '<strong>Currency: </strong>' +
-                                                  data.currency + '<br>';
-                                                  
+                                                  data.currency + '<br>';            
                                 if(geo.id == "GBR") {
                                     return [countryInfo].join('');
                                 } else {
+                                    var change;
+                                    if(data.percentageChange > 0)
+                                        change = '+' + Number(data.percentageChange).toFixed(2);
+                                    else
+                                        change = Number(data.percentageChange).toFixed(2);
+                                         
                                     return [countryInfo +
-                                            '<strong>Percentage Change: </strong>' +
-                                            Number(data.percentageChange).toFixed(2) +
+                                            '<strong>Change After Brexit: </strong>' +
+                                            change +
                                             '%</div>'].join('');
                                 }
                             },
                             highlightBorderWidth: 3
                         }
-                    
                     });
-                });
-                
-                
-                     
+                });       
            }
         });
 
@@ -75,7 +75,7 @@
             
                 var dataset = {};
                 
-                
+                // Determine the min and max for colour palette
                 var valuesDay = data.map(function(obj) {return ((obj['Day'] - obj['Brexit'])/obj['Brexit']*100);});
                 var valuesMonth = data.map(function(obj) {return ((obj['Month'] - obj['Brexit'])/obj['Brexit']*100);});
                 var valuesMonth3 = data.map(function(obj) {return ((obj['Month3'] - obj['Brexit'])/obj['Brexit']*100);});
@@ -85,19 +85,20 @@
                 
                 var minValue = Math.min.apply(null, all);var maxValue = Math.max.apply(null, all);
                 
-                
                 var paletteScale = d3v3.scale.linear()
                     .domain([minValue, 0, maxValue])
                     .range(['#600000', '#EAFFEE', '#004C0F']);
                     
+                // Create dataset for map
                 for(var i=0; i<data.length; i++) {
                     var iso = data[i]['Country'];
                     var currency = data[i]['Currency'];
                     var brexit = data[i]['Brexit'];
+                    var current = data[i][day];
                     
-                    var change = (data[i][day] - brexit)/brexit*100;
+                    var change = (current - brexit)/brexit*100;
                     
-                    dataset[iso] = {currency: currency, percentageChange: change, fillColor: paletteScale(change)};
+                    dataset[iso] = {currency: currency, brexit: brexit, current: current, percentageChange: change, fillColor: paletteScale(change)};
                 }
                 
                 dataset['GBR'] = {currency: 'British Pound', fillColor: '#0000ff'};

@@ -38,7 +38,7 @@
     <script src="bower_components/topojson/topojson.min.js"></script>
     
     <!-- World Map -->
-    <script src="bower_components/datamaps/dist/datamaps.world.min.js"></script>
+    <script src="bower_components/datamaps/dist/datamaps.world.hires.js"></script>
 
     <!--APP DATA-->
     <!--MAIN-->
@@ -94,6 +94,23 @@
                 <h3>Percentage Change Year on Year</h3>
                 <svg id="travelTypesChange" width="1000" height="500"></svg>
             </div>
+        </div>
+        
+        <div ng-controller="currencyMapController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+            <h2>CHANGE IN WORLD CURRENCIES AFTER BREXIT</h2>
+            <div class="description-text">
+                The British Pound fell significantly after the referendum vote.  Each currency appreciated against the pound by an average of 6.89%.  Currencies have increased in value by an average of 13.26% as of today.
+            </div>
+            <!--Currency Map-->
+            <div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
+                <button class="ui button" ng-click="changeMap('Day')">1 Day</button>
+                <button class="ui button" ng-click="changeMap('Month')">1 Month</button>
+                <button class="ui button" ng-click="changeMap('Month3')">3 Months</button>
+                <button class="ui button" ng-click="changeMap('Now')">Now</button>
+            </div>
+            <map data="data">
+                <div class="map"></div>
+            </map>    
         </div>
         
 

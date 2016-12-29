@@ -60,20 +60,11 @@ svg#travelTypesChange circle.Miscellaneous{
 }
 
 .map {
-    position:absolute;
+    position:relative;
     left:0;
     right:0;
     width: 900px;
     height: 600px;
-}
-
-.datamaps-legend dt, .datamaps-legend dd {
-    float: none;
-}
-
-.datamaps-legend {
-    right: -50px;
-    left: 0px;
 }
 
 .description-text {
