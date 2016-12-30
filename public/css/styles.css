@@ -15,6 +15,7 @@
     font-family: 'Lato';
     font-size: 36px;
     font-weight: 300;
+    line-height: 1;
     color: #333333;
 }
 
@@ -70,6 +71,13 @@ svg#travelTypesChange circle.Miscellaneous{
 .description-text {
     width: 720px;
     text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.introduction-text {
+    width: 720px;
     margin-top: 10px;
     font-size: 18px;
     font-weight: 300;

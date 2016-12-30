@@ -58,11 +58,35 @@
 <body ng-controller="mainController">
 
     <!-- HEADER AND NAVBAR -->
-    <div id="header" class="header" style="margin: 20px 0 40px 0">
-        <span class="title">{{title}}</span>  
+    <div id="header" class="header" style="display: flex; margin: 20px 0 40px 0">
+        <span class="title">The Effects of the EU Referendum on Tourism</span>
+    </div>
+    
+    <div style="display: flex; justify-content: center; margin: 20px 0 40px 0">
+        <img src="images/uk.png" alt="UK Map" style="height: 120px; width: auto; margin-right: 30px">
+        <div class="introduction-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper erat sit amet ligula elementum interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec congue mi vitae ipsum molestie tincidunt. Scroll down to see the impact of Brexit on different areas related to the the British tourism industry.
+        </div>
     </div>
 
     <div id="main" class="container">
+        
+        <div ng-controller="currencyMapController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+            <h2>CHANGE IN WORLD CURRENCIES AFTER BREXIT</h2>
+            <div class="description-text">
+                The British Pound fell significantly after the referendum vote.  Each currency appreciated against the pound by an average of 6.89%.  Currencies have increased in value by an average of 13.26% as of today.
+            </div>
+            <!--Currency Map-->
+            <div class="ui buttons" style="width: 500px; margin: 40px 0 30px 0">
+                <button ng-class="getDayStyle('Day')" ng-click="changeMap('Day')">1 Day</button>
+                <button ng-class="getDayStyle('Month')" ng-click="changeMap('Month')">1 Month</button>
+                <button ng-class="getDayStyle('Month3')" ng-click="changeMap('Month3')">3 Months</button>
+                <button ng-class="getDayStyle('Now')" ng-click="changeMap('Now')">Now</button>
+            </div>
+            <map data="data">
+                <div class="map"></div>
+            </map>    
+        </div>
             
         <div ng-controller="aviationSharePriceController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
             <h2>CHANGE IN AVIATION COMPANIES' SHARE PRICE</h2>
@@ -71,11 +95,11 @@
             </div>
             <!--Aviation Share Price-->
             <div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
-              <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
-              <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
-              <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
-              <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
-              <button class="ui button" ng-click="selectAirline('./data/thomas-cook.csv')">Thomas Cook</button>
+              <button ng-class="getStyle('easyjet')" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
+              <button ng-class="getStyle('ryanair')" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
+              <button ng-class="getStyle('flybe')" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
+              <button ng-class="getStyle('iag')" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+              <button ng-class="getStyle('thomas-cook')" ng-click="selectAirline('./data/thomas-cook.csv')">Thomas Cook</button>
             </div>
             <svg width="1080" height="540"></svg>
         </div>
@@ -95,24 +119,6 @@
                 <svg id="travelTypesChange" width="1000" height="500"></svg>
             </div>
         </div>
-        
-        <div ng-controller="currencyMapController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
-            <h2>CHANGE IN WORLD CURRENCIES AFTER BREXIT</h2>
-            <div class="description-text">
-                The British Pound fell significantly after the referendum vote.  Each currency appreciated against the pound by an average of 6.89%.  Currencies have increased in value by an average of 13.26% as of today.
-            </div>
-            <!--Currency Map-->
-            <div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
-                <button class="ui button" ng-click="changeMap('Day')">1 Day</button>
-                <button class="ui button" ng-click="changeMap('Month')">1 Month</button>
-                <button class="ui button" ng-click="changeMap('Month3')">3 Months</button>
-                <button class="ui button" ng-click="changeMap('Now')">Now</button>
-            </div>
-            <map data="data">
-                <div class="map"></div>
-            </map>    
-        </div>
-        
 
     </div>
 

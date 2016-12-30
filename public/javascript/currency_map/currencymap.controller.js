@@ -66,10 +66,25 @@
     currencyMapController.$inject = ['$scope'];
 
     function currencyMapController($scope) {
+        
+        $scope.mapDay = 'Day';
+        
+        $scope.getDayStyle = function (item) {
+
+            if (item === $scope.mapDay) {
+                return 'ui button active';
+            }
+            else {
+                return 'ui button';
+            }
+
+        }
     
         var currencyDataPath = '/resources/brexit_currencies.csv';
         
         $scope.changeMap = function(day) {
+            
+            $scope.mapDay = day;
             
             d3v3.csv(currencyDataPath, function(data) {
             
