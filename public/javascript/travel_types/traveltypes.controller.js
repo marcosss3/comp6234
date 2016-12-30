@@ -77,6 +77,25 @@
                         .text(function (d) {
                             return d.id;
                         });
+
+                    var brexit = new Date(2016, 5, 23, 0, 0, 0, 0);
+
+                    vm.g.append("line")
+                        .attr("x1", vm.x(brexit))
+                        .attr("y1", 0)
+                        .attr("x2", vm.x(brexit))
+                        .attr("y2", vm.height)
+                        .style("stroke-width", 1)
+                        .style("stroke", "gray")
+                        .style("fill", "none");
+
+                    vm.svg.append("text")
+                        .attr("transform", "translate(" + (vm.x(brexit)+40) + "," + 20 + ")")
+                        .attr("dy", ".35em")
+                        .attr("text-anchor", "start")
+                        .style("fill", "gray")
+                        .text("EU Referendum");
+
                 };
 
 
@@ -128,7 +147,6 @@
                         .y(function (d) {
                             return vm.y(d.visitors);
                         });
-
                 }
 
                 d3v4.csv(dataCsvAbsoluteTravelTypePath, type, function (error, data) {
@@ -260,6 +278,25 @@
                         .text(function (d) {
                             return d.id;
                         });
+
+                    var brexit = new Date(2016, 5, 23, 0, 0, 0, 0);
+
+                    vmChange.g.append("line")
+                        .attr("x1", vmChange.x(brexit))
+                        .attr("y1", -30)
+                        .attr("x2", vmChange.x(brexit))
+                        .attr("y2", vmChange.height)
+                        .style("stroke-width", 1)
+                        .style("stroke", "gray")
+                        .style("fill", "none");
+
+                    vmChange.svg.append("text")
+                        .attr("transform", "translate(" + (vmChange.x(brexit)+40) + "," + 20 + ")")
+                        .attr("dy", ".35em")
+                        .attr("text-anchor", "start")
+                        .style("fill", "gray")
+                        .text("EU Referendum");
+
                 };
 
 
