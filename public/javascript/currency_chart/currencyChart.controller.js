@@ -136,7 +136,7 @@
 			  .attr("width", 10)
 			  .attr("height", 10)                                    
 			  .attr("x", width + (margin.right/3) - 10) 
-			  .attr("y", function (d, i) { return (legendSpace)+i*(legendSpace) - 9; })  // spacing
+			  .attr("y", function (d, i) { return i*(legendSpace) - 9; })  // spacing
 			  .attr("fill",function(d) {
 				return d.visible ? color(d.name) : "#F1F1F2"; // If array key "visible" = true then color rect, if not then make it grey 
 			  })
@@ -190,7 +190,7 @@
 			  
 		  currency.append("text")
 			  .attr("x", width + (margin.right/3)) 
-			  .attr("y", function (d, i) { return (legendSpace)+i*(legendSpace); })  // (return (11.25/2 =) 5.625) + i * (5.625) 
+			  .attr("y", function (d, i) { return i*(legendSpace); })  // (return (11.25/2 =) 5.625) + i * (5.625) 
 			  .text(function(d) { return d.name; }); 
 		  
 
@@ -225,7 +225,7 @@
 		  focus.append("text") // http://stackoverflow.com/questions/22064083/d3-js-multi-series-chart-with-y-value-tracking
 				.attr("class", "tooltips")
 				.attr("x", width + 10) // position tooltips  
-				.attr("y", function (d, i) { return (legendSpace)+i*(legendSpace); }) // (return (11.25/2 =) 5.625) + i * (5.625) // position tooltips   
+				.attr("y", function (d, i) { return i*(legendSpace); }) // (return (11.25/2 =) 5.625) + i * (5.625) // position tooltips   
 				
 		  // Add mouseover events for hover line.
 		  d3.select("#mouse-tracker") // select chart plot background rect #mouse-tracker
