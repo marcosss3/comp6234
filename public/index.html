@@ -101,7 +101,13 @@
               <button ng-class="getAirlineStyle('iag')" ng-click="selectAirline('./data/iag.csv')">IAG</button>
               <button ng-class="getAirlineStyle('thomas-cook')" ng-click="selectAirline('./data/thomas-cook.csv')">Thomas Cook</button>
             </div>
-            <svg width="1080" height="540"></svg>
+            <div style="display: flex; flex-direction: row; align-items: center; margin-top: 24px">
+                <div style="width: 40px; height: 3px; background-color: #e41a1c; opacity: 0.4; margin: 0 10px 0 0"></div>
+                <span>2015</span>
+                <div style="width: 40px; height: 3px; background-color: #e41a1c; margin: 0 10px 0 30px"></div>
+                <span>2016</span>
+            </div>
+            <svg id="sharePrices" width="1080" height="540"></svg>
         </div>
 
         <!--Tourism travel types-->
