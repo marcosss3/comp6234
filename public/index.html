@@ -53,6 +53,8 @@
 
     <!--Currency Map -->
     <script src="/javascript/currency_map/currencymap.controller.js"></script>
+	
+	<script src="/javascript/currency_chart/currencyChart.controller.js"></script>
     
 </head>
 <body ng-controller="mainController">
@@ -87,6 +89,16 @@
                 <div class="map"></div>
             </map>    
         </div>
+		
+		
+        <div ng-controller="currencyChartController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+			<div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
+				<button class="ui button" id="all">Select All</button>
+				<button class="ui button" id="none">Deselect All</button>
+			</div>
+			<!--Currency Chart-->
+			<svg id="currencychart" width="1080" height="540"></svg>
+		</div>
             
         <div ng-controller="aviationSharePriceController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
             <h2>CHANGE IN AVIATION COMPANIES' SHARE PRICE</h2>

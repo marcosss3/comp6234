@@ -3,7 +3,8 @@ angular.module('app', [
     'app.main',
     'app.travelType',
     'app.aviationSharePrice',
-    'app.currencyMap'
+    'app.currencyMap',
+	'app.currencyChart'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
