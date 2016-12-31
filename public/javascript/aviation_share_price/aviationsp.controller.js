@@ -15,35 +15,26 @@
         }])
         .controller('aviationSharePriceController',  aviationSharePriceController);
 
-
     aviationSharePriceController.$inject = ['$scope'];
     
-
     function aviationSharePriceController($scope) {
-        
-        $scope.sharePrices = [];
 
         $scope.currentItem = 'easyjet';
     
-        $scope.getStyle = function (item) {
-
+        $scope.getAirlineStyle = function (item) {
             if (item === $scope.currentItem) {
                 return 'ui button active';
             }
             else {
                 return 'ui button';
             }
-
         }
 
         var palette = ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3'];
-        var count = 0;
 
         var fileName = './data/easyjet.csv';
 
         var svg = d3v4.select("svg");
-        
-        var max, min;
 
         function createShapes(fileName) {
 
@@ -82,8 +73,8 @@
                 
                 //y.domain([0, d3v4.max(data, function (d) { return d.Close + 50; })]);
                 y.domain([ 
-                    d3v4.min(data, function (d) { min = d.Close; return d.Close * 0.96; }) , 
-                    d3v4.max(data, function (d) { max = d.Close; return d.Close * 1.04; }) 
+                    d3v4.min(data, function (d) { return d.Close * 0.96; }) , 
+                    d3v4.max(data, function (d) { return d.Close * 1.04; }) 
                 ]);
 
                 g.append("g")
@@ -138,8 +129,6 @@
             /* Add 2015 line */
             
             d3v4.csv(fileName.split('.csv')[0] + '2015.csv', function (d) {
-
-                console.log(min);
 
                 d.Date = parseTime(d.Date.replace("2015", "2016"));
                 d.Close = +d.Close;
