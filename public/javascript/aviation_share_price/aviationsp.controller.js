@@ -61,7 +61,7 @@
         function createAxes () {
             
             sp.g.append("g")
-                .attr("class", "x axis")
+                .attr("class", "y axis")
                 .attr("transform", "translate(0," + sp.height + ")")
                 .call(d3v4.axisBottom(sp.x))
                 .append("text")

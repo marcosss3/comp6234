@@ -334,7 +334,7 @@
 			.style("fill", "none");
 		
 		var brexittext = svg.append("text")
-			.attr("transform", "translate(" + (xScale(brexit)+10) + "," + 0 + ")")
+			.attr("transform", "translate(" + (xScale(brexit)+10) + "," + 14 + ")")
 			.attr("dy", ".35em")
 			.attr("text-anchor", "start")
 			.style("fill", "gray")
