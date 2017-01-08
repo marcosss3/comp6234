@@ -13,11 +13,12 @@
 
         .controller('travelTypeController', travelTypeController);
 
-
-        function travelTypeController() {
+        travelTypeController.$inject = ['$scope'];
+        function travelTypeController($scope) {
             var parseTime = d3v4.timeParse("%Y%m%d");
             var dataCsvAbsoluteTravelTypePath = "/resources/ukVisit.csv";
             var dataCsvChangeTravelTypePath = "/resources/ukVisitChange.csv";
+            $scope.travelhide = true;
 
             drawAbsoluteGraph();
             drawChangeGraph();

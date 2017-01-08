@@ -16,7 +16,4 @@
         $scope.title = 'The Effects of the EU Referendum on Tourism';
     }
 
-
-
-
 })();
