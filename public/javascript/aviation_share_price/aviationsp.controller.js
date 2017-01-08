@@ -97,7 +97,7 @@
                 .attr("d", function (d) {
                     return sp.line(d.values);
                 })
-                .style("stroke-width", 2)
+                .style("stroke-width", 1)
                 .style("stroke-opacity", 0.4)
                 .style("stroke", palette[0])
 
