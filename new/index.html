@@ -1,0 +1,136 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    
+    <!-- Styling -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700" />
+    
+    <link rel="stylesheet" type="text/css" href="bower_components/semantic/dist/semantic.min.css">
+
+    <!-- AngularJS -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <!--D3-->
+    <script src="bower_components/d3/d3.js"></script>
+    <script>
+        var d3v4 = d3;
+    </script>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script>
+        var d3v3 = d3;
+    </script>
+
+    <!--Jquery-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!--semantic-->
+    <script src="bower_components/semantic/dist/semantic.min.js"></script>
+    
+    <!-- Topojson -->
+    <script src="bower_components/topojson/topojson.min.js"></script>
+    
+    <!-- World Map -->
+    <script src="bower_components/datamaps/dist/datamaps.world.hires.js"></script>
+
+    <!--APP DATA-->
+    <!--MAIN-->
+    <script src="/javascript/app.js"></script>
+    <script src="/javascript/main.controller.js"></script>
+
+    <!--Aviation-->
+    <script src="/javascript/aviation_share_price/aviationsp.controller.js"></script>
+
+    <!--Travel Data-->
+    <script src="/javascript/travel_types/traveltypes.controller.js"></script>
+
+    <!--Currency Map -->
+    <script src="/javascript/currency_map/currencymap.controller.js"></script>
+    
+	<!--Currency Chart-->
+	<script src="/javascript/currency_chart/currencyChart.controller.js"></script>
+	
+</head>
+<body ng-controller="mainController">
+
+    <!-- HEADER AND NAVBAR -->
+    <div id="header" class="header" style="margin: 20px 0 40px 0">
+        <span class="title">{{title}}</span>  
+    </div>
+
+    <div id="main" class="container">
+            
+        <div ng-controller="aviationSharePriceController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+            <h2>CHANGE IN AVIATION COMPANIES' SHARE PRICE</h2>
+            <div class="description-text">
+                British airline companies have seen their shares fall large percentages on fears about a drop-off in UK travel abroad.
+            </div>
+            <!--Aviation Share Price-->
+            <div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
+              <button class="ui button" ng-click="selectAirline('./data/easyjet.csv')">Easyjet</button>
+              <button class="ui button" ng-click="selectAirline('./data/ryanair.csv')">Ryanair</button>
+              <button class="ui button" ng-click="selectAirline('./data/flybe.csv')">Flybe</button>
+              <button class="ui button" ng-click="selectAirline('./data/iag.csv')">IAG</button>
+              <button class="ui button" ng-click="selectAirline('./data/thomas-cook.csv')">Thomas Cook</button>
+            </div>
+            <svg width="1080" height="540"></svg>
+        </div>
+
+        <!--Tourism travel types-->
+        <div ng-controller="travelTypeController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+            <h2>VISITS TO THE UK BY TYPE</h2>
+            <div class="description-text">
+                Overseas residents made slightly less visits to the UK during the months of summer. However, this minimum difference is probably not enough to be considered a direct consequence of Brexit.
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+                <h3>Absolute Figures</h3>
+                <svg id="travelTypesAbsolute" width="1000" height="500"></svg>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+                <h3>Percentage Change Year on Year</h3>
+                <svg id="travelTypesChange" width="1000" height="500"></svg>
+            </div>
+        </div>
+        
+        <div ng-controller="currencyMapController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+            <h2>CHANGE IN WORLD CURRENCIES AFTER BREXIT</h2>
+            <div class="description-text">
+                The British Pound fell significantly after the referendum vote.  Each currency appreciated against the pound by an average of 6.89%.  Currencies have increased in value by an average of 13.26% as of today.
+            </div>
+            <!--Currency Map-->
+            <div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
+                <button class="ui button" ng-click="changeMap('Day')">1 Day</button>
+                <button class="ui button" ng-click="changeMap('Month')">1 Month</button>
+                <button class="ui button" ng-click="changeMap('Month3')">3 Months</button>
+                <button class="ui button" ng-click="changeMap('Now')">Now</button>
+            </div>
+            <map data="data">
+                <div class="map"></div>
+            </map>  
+		</div>
+		<!--Currency Chart-->
+        <div ng-controller="currencyChartController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+			<div class="ui buttons" style="width: 500px; margin: 40px 0 0px 0">
+				<button class="ui button" id="all">Select All</button>
+				<button class="ui button" id="none">Deselect All</button>
+			</div>
+			
+		</div>
+		
+        
+
+    </div>
+
+</body>
+
+
+
+
+</html>

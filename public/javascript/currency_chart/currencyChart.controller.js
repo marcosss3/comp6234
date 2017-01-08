@@ -40,7 +40,7 @@
 		var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
-			;  
+			.tickFormat(formatPercent);  
 
 		var line = d3.svg.line()
 			.interpolate("basis")
@@ -79,7 +79,7 @@
 			  values: data.map(function(d) {
 				return {
 				  Date: +d.Date, 
-				  Rate: +(d[name]),
+				  Rate: +(d[name])/100,
 				  };
 			  }),
 			  visible: (name === "Euro" || name === "US Dollar" || name === "Chinese Yuan" ? true : false) // "visible": all false except for EUR, USD and CNY.
@@ -242,7 +242,7 @@
 			  var mouse_x = d3.mouse(this)[0]; // Finding mouse x position on rect
 			  var graph_x = xScale.invert(mouse_x); // 
 			  
-			  var format = d3.time.format('%d %b %y'); // Format hover date text to show three letter month and full year
+			  var format = d3.time.format('%d %b %y');
 			  
 			  hoverDate.text(format(graph_x)); // scale mouse position to xScale date and format it to show month and year
 			  
@@ -283,7 +283,7 @@
 			  values: data.map(function(d) { // "values": which has an array of the dates and ratings
 				return {
 				  Date: +d.Date, 
-				  Rate: +(d[name]),
+				  Rate: +(d[name])/100,
 				  };
 			  }),
 			  visible: true // "visible": all true.
@@ -298,7 +298,7 @@
 			  values: data.map(function(d) { // "values": which has an array of the dates and ratings
 				return {
 				  Date: +d.Date, 
-				  Rate: +(d[name]),
+				  Rate: +(d[name])/100,
 				  };
 			  }),
 			  visible: false // "visible": all false
