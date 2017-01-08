@@ -133,3 +133,28 @@ body {
   stroke: #FFF;
   shape-rendering: crispEdges;
 }
+
+
+.chart rect {
+    stroke: white;
+    fill-opacity: .6;
+    fill: forestgreen;
+
+}
+.bar.positive {
+    fill: forestgreen;
+}
+
+.bar.negative {
+    fill: indianred;
+}
+
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
