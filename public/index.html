@@ -132,11 +132,15 @@
             <div class="description-text">
                 Overseas residents made slightly less visits to the UK during the months of summer. However, this minimum difference is probably not enough to be considered a direct consequence of Brexit.
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+            <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+                <button class="ui button" ng-click="travelhide=true">Absolute</button>
+                <button class="ui button" ng-click="travelhide=false">Change</button>
+            </div>
+            <div ng-show="travelhide" style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
                 <h3>Absolute Figures</h3>
                 <svg id="travelTypesAbsolute" width="1000" height="500"></svg>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+            <div ng-show='!travelhide' style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
                 <h3>Percentage Change Year on Year</h3>
                 <svg id="travelTypesChange" width="1000" height="500"></svg>
             </div>
