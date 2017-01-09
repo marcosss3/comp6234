@@ -53,21 +53,24 @@
 
     <!--Currency Map -->
     <script src="/javascript/currency_map/currencymap.controller.js"></script>
-	
 	<script src="/javascript/currency_chart/currencyChart.controller.js"></script>
-    
+
+    <!--Revenue Change-->
+    <script src="/javascript/expenditure/yoychange.controller.js"></script>
+
+
 </head>
 <body ng-controller="mainController">
 
     <!-- HEADER AND NAVBAR -->
-    <div id="header" class="header" style="display: flex; margin: 20px 0 40px 0">
-        <span class="title">The Effects of the EU Referendum on Tourism</span>
+    <div id="header" class="header" style="display: flex; margin: 20px 0 50px 0">
+        <span class="title">What are the Effects of the EU Referendum on UK Tourism?</span>
     </div>
     
-    <div style="display: flex; justify-content: center; margin: 20px 0 40px 0">
+    <div style="display: flex; justify-content: center; margin-bottom: 50px">
         <img src="images/uk.png" alt="UK Map" style="height: 120px; width: auto; margin-right: 30px">
         <div class="introduction-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper erat sit amet ligula elementum interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec congue mi vitae ipsum molestie tincidunt. Scroll down to see the impact of Brexit on different areas related to the the British tourism industry.
+            It has been a couple of months since the outcome of the EU Referendum was officially announced to be 'leave'. We explore whether this has had an impact on UK tourism. Do airlines expect a drop in travel abroad? Are foreign tourists spending less on their holidays? Scroll down to see the impact of Brexit on different areas related to the British tourism industry.
         </div>
     </div>
 
@@ -92,9 +95,9 @@
 		
 		
         <div ng-controller="currencyChartController" style="display: flex; flex-direction: column; align-items: center">
-            <h2>CHANGE IN POUND EXCHANGE RATES</h2>
+            <h2>PERCENTAGE CHANGE IN POUND EXCHANGE RATES</h2>
             <div class="description-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper erat sit amet ligula elementum interdum.
+                The uncertainty surrounding Brexit has meant that the Pound decreased in value against all of the world's major currencies, making it one of the worst performing currencies in 2016. This has turned the UK into a relatively cheaper destination for foreign travellers.
             </div>
 			<div class="ui buttons" style="width: 500px; margin: 40px 0 20px 0">
 				<button class="ui button" id="all">Select All</button>
@@ -104,7 +107,7 @@
 			<svg id="currencychart" width="1080" height="540"></svg>
 		</div>
             
-        <div ng-controller="aviationSharePriceController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 60px">
+        <div ng-controller="aviationSharePriceController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 70px">
             <h2>CHANGE IN AVIATION COMPANIES' SHARE PRICE</h2>
             <div class="description-text">
                 British airline companies have seen their shares fall large percentages on fears about a drop-off in UK travel abroad.
@@ -124,34 +127,55 @@
                 <span>2016</span>
             </div>
             <svg id="sharePrices" width="1080" height="540"></svg>
+            <div style="margin-top: 12px; color: #999999">Source: Yahoo Finance</div>
         </div>
 
         <!--Tourism travel types-->
-        <div ng-controller="travelTypeController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px">
+        <div ng-controller="travelTypeController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 100px">
             <h2>VISITS TO THE UK BY TYPE</h2>
             <div class="description-text">
                 Overseas residents made slightly less visits to the UK during the months of summer. However, this minimum difference is probably not enough to be considered a direct consequence of Brexit.
             </div>
-            <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+            <div class="ui buttons" style="width: 500px; margin: 30px 0 30px 0">
                 <button class="ui button" ng-click="travelhide=true">Absolute</button>
                 <button class="ui button" ng-click="travelhide=false">Change</button>
             </div>
-            <div ng-show="travelhide" style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+            <div ng-show="travelhide" style="display: flex; flex-direction: column; align-items: center">
                 <h3>Absolute Figures</h3>
                 <svg id="travelTypesAbsolute" width="1000" height="500"></svg>
             </div>
-            <div ng-show='!travelhide' style="display: flex; flex-direction: column; align-items: center; margin-top: 30px">
+            <div ng-show='!travelhide' style="display: flex; flex-direction: column; align-items: center">
                 <h3>Percentage Change Year on Year</h3>
                 <svg id="travelTypesChange" width="1000" height="500"></svg>
             </div>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px">
+
+
+
+        <div ng-controller="expenditureController" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 30px">
+            <h2>Expenditure by tourists in the UK and Abroad</h2>
+            <div class="description-text">
+                <p>Expenditure by UK tourists abroad has been increasing yeat on year (YoY) for over 5 years. Brexit does not seem to have
+                affected this trend</p>
+
+                <p>Expenditure by overseas tourists in the UK remained relatively constant after Brexit.
+                    Spending by tourists to the UK have remained constant over the last 2 years fluctuating between -0.1 and 0.1% growth YoY.</p>
+            </div>
+            <div class="ui buttons" style="width: 500px; margin: 30px 0 20px 0">
+                <button class="ui button" ng-click="redrawYoY('YoYUKExpAbroad')">UK Expenditure Abroad</button>
+                <button class="ui button" ng-click="redrawYoY('YOYOSExuk')">Tourist Expenditure in UK</button>
+            </div>
+            <div id="expenditureChangeContainer"></div>
+        </div>
+
+
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 70px">
             <h2>CONCLUSIONS</h2>
             <div class="description-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper erat sit amet ligula elementum interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec congue mi vitae ipsum molestie tincidunt.
+                The drop in value of the Pound Sterling and British airlines' share prices show the negative expectations with regards to the UK's tourism industry. Yet, it is still too early to confirm any effects caused by Brexit, as tourists' travelling and spending habits have remained similar this year.
             </div>
         </div>
+
 
     </div>
 
