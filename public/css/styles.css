@@ -72,6 +72,7 @@ svg#travelTypesChange circle.Miscellaneous{
     width: 720px;
     text-align: center;
     margin-top: 10px;
+    line-height: normal;
     font-size: 18px;
     font-weight: 300;
 }
@@ -79,6 +80,7 @@ svg#travelTypesChange circle.Miscellaneous{
 .introduction-text {
     width: 720px;
     margin-top: 10px;
+    line-height: normal;
     font-size: 18px;
     font-weight: 300;
 }
