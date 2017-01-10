@@ -16,11 +16,9 @@
 		
     function currencyChartController($scope) {		
 		//refers to http://bl.ocks.org/DStruths/9c042e3a6b66048b5bd4
-		var margin = {top: 20, right: 200, bottom: 100, left: 90},
-			margin2 = { top: 430, right: 10, bottom: 20, left: 80 },
+		var margin = {top: 20, right: 200, bottom:50, left: 90},
 			width = 1000 - margin.left - margin.right,
-			height = 500 - margin.top - margin.bottom,
-			height2 = 500 - margin2.top - margin2.bottom;
+			height = 500 - margin.top - margin.bottom
 
 		var parseDate = d3.time.format("%m/%d/%Y").parse;
 		var formatPercent = d3.format("%");
@@ -41,6 +39,7 @@
 		var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
+			.ticks(10)
 			.tickFormat(formatPercent);  
 
 		var line = d3.svg.line()
@@ -139,7 +138,7 @@
 			  .attr("width", 10)
 			  .attr("height", 10)                                    
 			  .attr("x", width + (margin.right/3) - 10) 
-			  .attr("y", function (d, i) { return i*(legendSpace) - 9; })  
+			  .attr("y", function (d, i) { return i*(legendSpace); })  
 			  .attr("fill",function(d) {
 				return d.visible ? color(d.name) : "#F1F1F2"; 
 			  })
@@ -193,7 +192,7 @@
 			  
 		  currency.append("text")
 			  .attr("x", width + (margin.right/3)) 
-			  .attr("y", function (d, i) { return i*(legendSpace); })  
+			  .attr("y", function (d, i) { return i*(legendSpace) + 9; })  
 			  .text(function(d) { return d.name; }); 
 		  
 
@@ -227,7 +226,7 @@
 		  focus.append("text") 
 				.attr("class", "tooltips")
 				.attr("x", width + 10) // position tooltips  
-				.attr("y", function (d, i) { return i*(legendSpace); })
+				.attr("y", function (d, i) { return i*legendSpace + 9; })
 				
 		  d3.select("#mouse-tracker") 
 		  .on("mousemove", mousemove) 
