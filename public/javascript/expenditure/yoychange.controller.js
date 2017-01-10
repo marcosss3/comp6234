@@ -42,7 +42,7 @@
                 .datum(dataReformated)
                 .call(columnChart()
                     .width(1000)
-                    .height(300)
+                    .height(400)
                     .x(function(d, i) { return d[0]; })
                     .y(function(d, i) { return d[1]; }));
         });
