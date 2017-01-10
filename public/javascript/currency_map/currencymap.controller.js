@@ -94,9 +94,9 @@
                 var valuesDay = data.map(function(obj) {return ((obj['Day'] - obj['Brexit'])/obj['Brexit']*100);});
                 var valuesMonth = data.map(function(obj) {return ((obj['Month'] - obj['Brexit'])/obj['Brexit']*100);});
                 var valuesMonth3 = data.map(function(obj) {return ((obj['Month3'] - obj['Brexit'])/obj['Brexit']*100);});
-                var valuesNow = data.map(function(obj) {return ((obj['Now'] - obj['Brexit'])/obj['Brexit']*100);});
+                var valuesMonth6 = data.map(function(obj) {return ((obj['Month6'] - obj['Brexit'])/obj['Brexit']*100);});
                 
-                var all = valuesDay.concat(valuesMonth).concat(valuesMonth3).concat(valuesNow);
+                var all = valuesDay.concat(valuesMonth).concat(valuesMonth3).concat(valuesMonth6);
                 
                 var minValue = Math.min.apply(null, all);var maxValue = Math.max.apply(null, all);
                 
